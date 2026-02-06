@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "pix-payload": "^1.0.4",
+    "qrcode": "^1.5.4"
+  }
+}
