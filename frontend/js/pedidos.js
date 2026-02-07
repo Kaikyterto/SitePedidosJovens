@@ -1,7 +1,12 @@
+const API_URL = "https://sitepedidosjovens.onrender.com";
+
 async function buscarPedidos() {
   try {
-    const res = await fetch("https://sitepedidosjovens.onrender.com/buscar_pedidos");
-    if (!res.ok) throw new Error("Erro ao buscar dados: " + res.status);
+    const res = await fetch(`${API_URL}/buscar_pedidos`);
+
+    if (!res.ok) {
+      throw new Error("Erro ao buscar pedidos: " + res.status);
+    }
 
     const dados = await res.json();
     console.log(dados);
@@ -11,7 +16,7 @@ async function buscarPedidos() {
 
     dados.forEach(pedido => {
       const item = document.createElement("div");
-      item.classList = "item";
+      item.className = "item";
 
       const textoPedido = document.createElement("span");
       textoPedido.textContent = `Cliente: ${pedido.cliente} - Produto: ${pedido.produto}`;
@@ -23,22 +28,24 @@ async function buscarPedidos() {
 
       btnEntregar.addEventListener("click", async () => {
         try {
-          const res = await fetch("https://sitepedidosjovens.onrender.com/marcar_entregue", {
+          const res = await fetch(`${API_URL}/marcar_entregue`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id: pedido.id }),
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id: pedido.id })
           });
 
-          if (res.ok) {
-            btnEntregar.textContent = "Entregue";
-            btnEntregar.disabled = true;
-          } else {
-            const data = await res.json();
-            alert("Erro ao atualizar: " + (data.erro || "Erro desconhecido"));
+          if (!res.ok) {
+            throw new Error("Erro ao atualizar pedido");
           }
+
+          btnEntregar.textContent = "Entregue";
+          btnEntregar.disabled = true;
+
         } catch (error) {
-          alert("Erro na comunicação com o servidor");
           console.error(error);
+          alert("Erro ao comunicar com o servidor");
         }
       });
 
@@ -48,9 +55,12 @@ async function buscarPedidos() {
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("Erro geral:", error);
   }
 }
 
+
 setInterval(buscarPedidos, 2000);
+
+
 buscarPedidos();
