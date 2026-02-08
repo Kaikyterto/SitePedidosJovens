@@ -32,16 +32,34 @@ body{
     width: 400px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 25px;
     gap: 7px;
     background-color: #2d3e5f;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
     font-family: 'Montserrat';
     margin-left: 10px;
-    justify-content: center;
+    justify-content: flex-start;
     color: white;
+    overflow: auto;
 }
+
+/* Estilização da scrollbar (funciona em navegadores baseados em WebKit, como Chrome e Edge) */ 
+#listaPedidos::-webkit-scrollbar { 
+    width: 10px; 
+    border-radius: 20px;
+ }
+
+ #listaPedidos::-webkit-scrollbar-track {
+     background: #2d3e5f;
+    border-radius: 20px;
+} 
+
+#listaPedidos::-webkit-scrollbar-thumb {
+    background-color: yellow;
+    border-radius: 20px;
+    border: 2px solid #2d3e5f; 
+    }
 
 .item{
     display: flex;
