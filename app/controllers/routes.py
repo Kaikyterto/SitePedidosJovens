@@ -128,3 +128,9 @@ def pagamento():
         conn.rollback()
         print("Erro ao inserir pagamento:", e)
         return jsonify({"erro": "Erro ao inserir pagamento"}), 500
+
+
+@cliente.route("/health")
+def health():
+    print("Acordando servidor")
+    return jsonify({"status": "ok"})
