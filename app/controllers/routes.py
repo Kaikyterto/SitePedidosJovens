@@ -134,3 +134,35 @@ def pagamento():
 def health():
     print("Acordando servidor")
     return jsonify({"status": "ok"})
+
+@cliente.route("/pesquisar")
+def pesquisar():
+    dados = request.get_json(silent=True)
+
+    if not dados:
+        return jsonify({"erro": "JSON inválido"}), 400
+
+    cliente = dados.get("nome")
+    data = dados.get("data")
+
+    if not cliente:
+        return jsonify({"erro": "Dados incompletos"}), 400
+
+    cliente = cliente.strip().title()
+
+    try:
+        cursor.execute("""
+            SELECT cliente, produto, data 
+            FROM pedidosclientes 
+            WHERE cliente = %s AND data = %s
+            ORDER BY data ASC
+        """, (cliente, data))
+        resultados = cursor.fetchall()
+    except Exception as e:
+        conn.rollback()
+        print("Erro ao pesquisar pedidos:", e)
+        return jsonify({"erro": "Erro ao pesquisar pedidos"}), 500
+
+    pedidos = [{"cliente": r[0], "produto": r[1], "data": r[2]} for r in resultados]
+
+    return jsonify(pedidos)

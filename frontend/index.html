@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App jovens</title>
-    <link rel="stylesheet" href="css/index.css">
-
-</head>
-<body>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
     <div id="principal">
-        <div id="caixa_nome">
-            <h1>Bem-vindo ao App jovens</h1>
-            <form id="form_pedido">
-                <label for="nome_usuario">Nome:</label>
-                <input type="text" id="nome_usuario" name="nome_usuario" placeholder="Digite seu nome" required=true>
-                    <button id="btn_nome">Enviar</button>
-            </form>
-        </div>
+      <div id="caixa_nome">
+        <h1>Bem-vindo ao App jovens</h1>
+        <form id="form_pedido">
+          <label for="nome_usuario">Nome:</label>
+          <input
+            type="text"
+            id="nome_usuario"
+            name="nome_usuario"
+            placeholder="Digite seu nome"
+            required="true"
+          />
+          <button id="btn_nome">Enviar</button>
+        </form>
+      </div>
 
-        <div id="cardapio">
-            <h1 id="nome_cardapio">Cardápio</h1>
-        </div>
+      <div id="cardapio">
+        <h1 id="nome_cardapio">Cardápio</h1>
+      </div>
 
-        <div id="div_conta">
-            <h1>Sua conta</h1>
-        </div>
+      <div id="div_conta">
+        <h1>Sua conta</h1>
+      </div>
 
-        <div id="principal_qr">
-            
-            <div id="div_qrcode">
-                <h3>Pedido realizado com sucesso! ✅</h3>
-                <canvas id="qrcode"></canvas>
-            </div>
-            <div id="div_pix-copia-cola">
-                <h3>PIX Copia e Cola</h3>
-                <textarea id="pix-copia-cola" readonly></textarea>
-                <button id="btn-copiar">Copiar código PIX</button>
-            </div>
-            
+      <div id="principal_qr">
+        <div id="div_qrcode">
+          <h3>Pedido realizado com sucesso! ✅</h3>
+          <canvas id="qrcode"></canvas>
         </div>
-        
-        
-        
+        <div id="div_pix-copia-cola">
+          <h3>PIX Copia e Cola</h3>
+          <textarea id="pix-copia-cola" readonly></textarea>
+          <button id="btn-copiar">Copiar código PIX</button>
+        </div>
+      </div>
+      <div id="caixa_nome" style="background-color:#2d3e5f; margin-left:50px; padding:20px; border-radius:8px; box-shadow:0 0 10px 2px rgba(255, 255, 0, 0.5)
+      ;"">
+        <h1>Doe para a camapanha!!!</h1>
+        <h1>Bebedouro para CTMBC</h1>
+        <h1>Estamos com 536,97</h1>
+      </div>
     </div>
-   
+
     <script src="https://cdn.jsdelivr.net/npm/pix-payload/dist/pix-payload.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script src="js/index.js"></script>
-    
-
-</body>
+  </body>
 </html>
