@@ -23,9 +23,9 @@ body {
 }
 
 #caixa_nome {
-  height: auto; /* altura se adapta ao conteúdo */
-  width: 90%; /* ocupa quase toda a tela em mobile */
-  max-width: 400px; /* limite máximo para desktop */
+  height: auto;
+  width: 90%;
+  max-width: 400px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -34,30 +34,62 @@ body {
   background-color: #2d3e5f;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-  margin: 10px; /* espaçamento entre caixas */
+  margin: 10px;
   box-sizing: border-box;
 }
 
-#noticias {
-  width: 90%; /* ocupa quase toda a tela em mobile */
-  max-width: 400px; /* limite máximo para desktop */
-  margin: 10px; /* centraliza e dá espaçamento */
+#fundo_anuncio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+}
+
+#anuncio {
+  display: flex;
+  width: 80%;
+  height: 80%;
+  margin: 10px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.5);
+  background-image: url("https://copilot.microsoft.com/th/id/BCO.d0255f96-1862-4385-bf65-708fd2f8402c.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   box-sizing: border-box;
-  font-size: 16px; /* tamanho legível no mobile */
+  background-position: center;
+  font-size: 16px;
+}
+
+.cancelar {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  left: calc(100% - 40px);
+  background-color: red;
+  border-radius: 10%;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cancelar:hover {
+  transform: scale(0.8);
 }
 
 @media (min-width: 700px) {
   /* Desktop: lado a lado */
-  #caixa_nome,
-  #noticias {
+  #caixa_nome {
     width: 400px;
     font-size: 18px;
   }
 }
-
 h1 {
   color: rgb(255, 255, 0);
   font-size: 30px;
