@@ -264,7 +264,7 @@ form {
   overflow-y: hidden;
 }
 
-#btn-copiar {
+.copiar {
   width: 100%;
   padding: 8px;
 

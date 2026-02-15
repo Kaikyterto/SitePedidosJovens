@@ -35,12 +35,24 @@ const fundo_anuncio = document.getElementById("fundo_anuncio");
 const btn_cancelar_anuncio = Array.from(
   document.getElementsByClassName("cancelar")
 );
+const btn_copiar_anuncio = document.getElementById("btn-copiar-anuncio");
 
 btn_cancelar_anuncio.forEach((el) => {
   el.addEventListener("click", () => {
     fundo_anuncio.style.display = "none";
   });
 });
+
+const chave_pix = "nemily0579@gmail.com";
+
+btn_copiar_anuncio.onclick = async () => {
+  try {
+    await navigator.clipboard.writeText(chave_pix);
+    alert("Chave PIX copiada!");
+  } catch (err) {
+    alert("Erro ao copiar chave PIX");
+  }
+};
 
 const h1_total = document.createElement("h1");
 h1_total.id = "texto_total";
