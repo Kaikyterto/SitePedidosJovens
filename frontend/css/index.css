@@ -14,7 +14,6 @@ body {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-wrap: wrap; /* permite empilhar no mobile */
   align-items: center;
   justify-content: center;
   background-color: #0d1b2a;
