@@ -1,4 +1,4 @@
-const pesquisarPedido = document.getElementById("pesquisar-pedido");
+const pesquisarPedido = document.getElementById("pesquisar-pedidos");
 const divListaPedidos = document.getElementById("listaPedidos");
 
 pesquisarPedido.addEventListener("input", async (evt) => {
