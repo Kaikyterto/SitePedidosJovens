@@ -2,23 +2,45 @@ const pesquisarPedido = document.getElementById("pesquisar-pedido");
 const divListaPedidos = document.getElementById("listaPedidos");
 
 pesquisarPedido.addEventListener("input", async (evt) => {
-  const valorPesquisa = evt.target.value;
+  const valorPesquisa = evt.target.value.trim();
+
+  // Evita chamada com campo vazio
+  if (!valorPesquisa) {
+    divListaPedidos.innerHTML = "";
+    return;
+  }
 
   try {
-    const dados = await fetch(
+    const resposta = await fetch(
       `https://sitepedidosjovens.onrender.com/pesquisar?nome=${encodeURIComponent(
         valorPesquisa
-      )}`,
-      { method: "GET", headers: { "Content-Type": "application/json" } }
+      )}`
     );
 
-    dados = await dados.json();
-    dados = [...dados];
+    if (!resposta.ok) {
+      console.log("Erro na API:", resposta.status);
+      return;
+    }
+
+    const dados = await resposta.json();
+
+    if (!Array.isArray(dados)) return;
+
+    // Limpa antes de renderizar
+    divListaPedidos.innerHTML = "";
 
     dados.forEach((e) => {
-      divListaPedidos.innerHTML = `Cliente:${e.cliente}, Produto:${e.produto}, Data:${e.data}`;
+      console.log(e);
+      divListaPedidos.innerHTML += `
+        <p>
+          Cliente: ${e.cliente} <br>
+          Produto: ${e.produto} <br>
+          Data: ${e.data}
+        </p>
+        <hr>
+      `;
     });
   } catch (error) {
-    console.error(error);
+    console.error("Erro na pesquisa:", error);
   }
 });

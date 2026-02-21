@@ -143,15 +143,15 @@ def pesquisar():
     if not cliente:
         return jsonify({"erro": "Dados incompletos"}), 400
 
-    cliente = cliente.strip().title()
+    cliente = cliente.strip()
 
     try:
         cursor.execute("""
             SELECT cliente, produto, data 
             FROM pedidosclientes 
-            WHERE cliente = %s
+            WHERE LOWER(cliente) LIKE LOWER(%s)
             ORDER BY data ASC
-        """, (cliente,))
+        """, (f"%{cliente}%",))
         resultados = cursor.fetchall()
     except Exception as e:
         conn.rollback()

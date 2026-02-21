@@ -99,3 +99,25 @@ button:active {
   transform: scale(0.97);
   transition: transform 0.1s ease;
 }
+
+#pesquisar-pedidos {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  font-size: 16px;
+  outline: none;
+
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+#pesquisar-pedidos:focus {
+  border-color: #4f46e5;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
